@@ -5,5 +5,4 @@
 #'
 #' @format A named character vector with fMRI user id as names and behavior user
 #'   id as values.
-#' @export
 "users_id_mapping"
