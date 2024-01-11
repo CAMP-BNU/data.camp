@@ -1,6 +1,11 @@
 ## code to prepare `users_id_mapping` dataset goes here
 
 library(tidyverse)
+tjnu_scanner <- read_csv(
+  "data-raw/tjnu-scanner.csv",
+  show_col_types = FALSE
+) |>
+  deframe()
 users_fmri <- fs::dir_ls(
   "data-raw/fMRI",
   all = TRUE,
@@ -26,7 +31,12 @@ users_fmri <- fs::dir_ls(
       .default = name
     ),
     user_sex = (sex == "女") + 1,
-    user_dob = as.Date(dob)
+    user_dob = as.Date(dob),
+    suffix = if_else(
+      site == "TJNU",
+      tjnu_scanner[sprintf("%03d", id)],
+      ""
+    )
   )
 users <- tarflow.iquizoo::fetch_iquizoo_mem()(
   readr::read_file("data-raw/users.sql")
@@ -40,7 +50,7 @@ users_match_remained <- users_match_all |>
 users_id_mapping <- users_match_all |>
   filter(!is.na(user_id)) |>
   bind_rows(users_match_remained) |>
-  mutate(subject = sprintf("%s%003d", site, id)) |>
+  mutate(subject = sprintf("%s%003d%s", site, id, suffix)) |>
   select(subject, user_id) |>
   deframe()
 usethis::use_data(users_id_mapping, overwrite = TRUE)
