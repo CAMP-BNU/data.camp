@@ -1,17 +1,16 @@
 Package: data.camp
-Title: What the Package Does (One Line, Title Case)
+Title: Stores some useful data sets for CAMP-BNU
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R:
     person("Liang", "Zhang", , "psychelzh@outlook.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-9041-1150"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
-Depends: 
-    R (>= 2.10)
-LazyData: true
+Description: This is a quick way to share data sets for CAMP-BNU.
+License: file LICENSE
 URL: https://github.com/CAMP-BNU/data.camp
 BugReports: https://github.com/CAMP-BNU/data.camp/issues
+Depends:
+    R (>= 2.10)
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
