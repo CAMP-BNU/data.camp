@@ -1,6 +1,6 @@
 Package: data.camp
 Title: Stores some useful data sets for CAMP-BNU
-Version: 0.0.1
+Version: 0.0.2
 Authors@R:
     person("Liang", "Zhang", , "psychelzh@outlook.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-9041-1150"))
