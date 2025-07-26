@@ -16,9 +16,10 @@ users_fmri <- fs::dir_ls(
   read_csv(show_col_types = FALSE, id = "path") |>
   filter(id < 999) |>
   mutate(
-    site = case_when(
-      str_detect(path, "20230526") ~ "SICNU",
-      str_detect(path, "20230602") ~ "TJNU"
+    site = if_else(
+      str_detect(path, "20230526"),
+      "SICNU",
+      "TJNU"
     ),
     .before = 1L,
     .keep = "unused"
